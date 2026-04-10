@@ -77,8 +77,8 @@ src/
 - [x] **3.3** `FilterBar` — cabin class dropdown (left) + sort by dropdown (right)
 - [x] **3.4** `AirlineLogo` — colored square badge with airline code
 - [x] **3.5** `FlightCard` — airline info, departure→arrival route with duration/stops, price, date, "View details" link
-- [ ] **3.6** `LoadingSkeleton` — shimmer skeleton matching flight card layout
-- [ ] **3.7** `EmptyState` — "No flights found" with retry action
+- [x] **3.6** `LoadingSkeleton` — shimmer skeleton matching flight card layout
+- [x] **3.7** `EmptyState` — "No flights found" with retry action
 - [ ] **3.8** Wire search flow in `page.tsx`: send query → show loading → display conversation + results
 
 ### Phase 4: Flight Details Panel
