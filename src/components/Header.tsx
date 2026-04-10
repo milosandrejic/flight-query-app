@@ -39,7 +39,7 @@ export function Header() {
             lineHeight: 1,
           }}
         >
-          Flight Query Engine
+          Flight Query App
         </Typography>
       </Box>
     </Box>

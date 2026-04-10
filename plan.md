@@ -65,9 +65,9 @@ src/
 - [x] **1.3** Add environment config (`NEXT_PUBLIC_API_URL`)
 
 ### Phase 2: Layout & Static Components
-- [ ] **2.1** `Header` — sticky top bar with plane icon + "Flight Query Engine" text
-- [ ] **2.2** `BackgroundPattern` — decorative SVG clouds/planes/dotted paths (from Figma export)
-- [ ] **2.3** `WelcomeHero` — plane icon, title, subtitle, 3 clickable example queries
+- [x] **2.1** `Header` — sticky top bar with plane icon + "Flight Query Engine" text
+- [x] **2.2** `BackgroundPattern` — decorative SVG clouds/planes/dotted paths (from Figma export)
+- [x] **2.3** `WelcomeHero` — plane icon, title, subtitle, 3 clickable example queries
 - [ ] **2.4** `ChatInput` — text input with send button, disabled state while loading
 - [ ] **2.5** Wire up root `page.tsx` layout: Header + Background + WelcomeHero + ChatInput
 
