@@ -1,5 +1,3 @@
-"use client";
-
 import { Plane } from "lucide-react";
 
 import { Box, Typography } from "@mui/material";
@@ -29,7 +27,11 @@ export function Header() {
           gap: "8px",
         }}
       >
-        <Plane size={20} color="#6366f1" />
+        <Plane
+          size={20}
+          color="#6366f1"
+        />
+
         <Typography
           component="span"
           sx={{

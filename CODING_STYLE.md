@@ -4,6 +4,7 @@
 
 - **File naming**: Use kebab-case for all files (`sign-in-view.jsx`, `account-drawer.jsx`)
 - **Component exports**: Use named exports only (`export function ComponentName() {}`)
+- **Exception**: Next.js route files (`page.tsx`, `layout.tsx`, `error.tsx`, `loading.tsx`, `not-found.tsx`, `template.tsx`) must use `export default`
 - **Component organization**: One component per file unless tightly coupled
 
 ## "use client" Directive (Next.js)

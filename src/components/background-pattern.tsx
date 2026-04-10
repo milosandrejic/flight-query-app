@@ -1,5 +1,3 @@
-"use client";
-
 import { Box } from "@mui/material";
 
 const cloudPath1 = "M20 40 Q 20 25, 35 25 Q 35 15, 50 15 Q 65 15, 65 25 Q 80 25, 80 40 Z";

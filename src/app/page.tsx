@@ -4,11 +4,11 @@ import { Box } from "@mui/material";
 
 import { ConversationMessage } from "@/types";
 
-import { Header } from "@/components/Header";
-import { ChatInput } from "@/components/ChatInput";
-import { WelcomeHero } from "@/components/WelcomeHero";
-import { BackgroundPattern } from "@/components/BackgroundPattern";
-import { ConversationTimeline } from "@/components/ConversationTimeline";
+import { Header } from "@/components/header";
+import { ChatInput } from "@/components/chat-input";
+import { WelcomeHero } from "@/components/welcome-hero";
+import { BackgroundPattern } from "@/components/background-pattern";
+import { ConversationTimeline } from "@/components/conversation-timeline";
 
 // Temporary mock data — will be replaced with real state in 3.8
 const mockMessages: ConversationMessage[] = [
@@ -40,20 +40,32 @@ export default function Home() {
   return (
     <>
       <BackgroundPattern />
+
       <Header />
-      <Box component="main" sx={{ mx: "auto", maxWidth: 920, px: 3 }}>
-        {!hasConversation && (
+
+      <Box
+        component="main"
+        sx={{ mx: "auto", maxWidth: 920, px: 3 }}
+      >
+        {
+          !hasConversation &&
           <Box sx={{ pt: 15, pb: 4 }}>
             <WelcomeHero onQuickStart={handleQuickStart} />
           </Box>
-        )}
-        {hasConversation && (
+        }
+
+        {
+          hasConversation &&
           <Box sx={{ pt: 4 }}>
             <ConversationTimeline messages={mockMessages} />
           </Box>
-        )}
+        }
+
         <Box sx={{ mb: 3, mt: hasConversation ? 3 : 0 }}>
-          <ChatInput onSend={handleSend} isLoading={false} />
+          <ChatInput
+            onSend={handleSend}
+            isLoading={false}
+          />
         </Box>
       </Box>
     </>

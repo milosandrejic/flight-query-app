@@ -16,6 +16,7 @@ export function ChatInput({ onSend, isLoading, placeholder }: ChatInputProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (value.trim() && !isLoading) {
       onSend(value.trim());
       setValue("");
@@ -23,7 +24,11 @@ export function ChatInput({ onSend, isLoading, placeholder }: ChatInputProps) {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ width: "100%" }}
+    >
       <Box sx={{ position: "relative" }}>
         <Box
           component="input"
@@ -53,6 +58,7 @@ export function ChatInput({ onSend, isLoading, placeholder }: ChatInputProps) {
             "&:disabled": { opacity: 0.5, cursor: "not-allowed" },
           }}
         />
+
         <Box
           component="button"
           type="submit"
