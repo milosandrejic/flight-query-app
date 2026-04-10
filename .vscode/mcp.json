@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "mui": {
+      "type": "http",
+      "url": "https://mcp.mui.com/sse"
+    },
+    "nextjs": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-remote", "https://nextjs-mcp.vercel.app/sse"]
+    }
+  }
+}
