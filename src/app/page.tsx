@@ -2,10 +2,11 @@
 
 import { Box } from "@mui/material";
 
-import { ConversationMessage } from "@/types";
+import { SortBy, CabinClass, ConversationMessage } from "@/types";
 
 import { Header } from "@/components/header";
 import { ChatInput } from "@/components/chat-input";
+import { FilterBar } from "@/components/filter-bar";
 import { WelcomeHero } from "@/components/welcome-hero";
 import { QuickReplies } from "@/components/quick-replies";
 import { BackgroundPattern } from "@/components/background-pattern";
@@ -40,6 +41,14 @@ export default function Home() {
 
   const handleQuickReply = (suggestion: string) => {
     console.log("Quick reply:", suggestion);
+  };
+
+  const handleCabinChange = (cabin: CabinClass) => {
+    console.log("Cabin:", cabin);
+  };
+
+  const handleSortChange = (sort: SortBy) => {
+    console.log("Sort:", sort);
   };
 
   return (
@@ -77,6 +86,18 @@ export default function Home() {
           hasConversation &&
           <Box sx={{ mb: 3 }}>
             <QuickReplies onSelect={handleQuickReply} />
+          </Box>
+        }
+
+        {
+          hasConversation &&
+          <Box sx={{ mb: 3 }}>
+            <FilterBar
+              cabinClass="economy"
+              sortBy="price"
+              onCabinChange={handleCabinChange}
+              onSortChange={handleSortChange}
+            />
           </Box>
         }
       </Box>

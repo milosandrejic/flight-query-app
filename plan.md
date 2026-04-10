@@ -72,8 +72,8 @@ src/
 - [x] **2.5** Wire up root `page.tsx` layout: Header + Background + WelcomeHero + ChatInput
 
 ### Phase 3: Search Flow & Results
-- [ ] **3.1** `ConversationTimeline` — renders user/system messages with timeline dots and timestamps
-- [ ] **3.2** `QuickReplies` — row of suggestion chips ("Make it cheaper", "Direct flights only", etc.)
+- [x] **3.1** `ConversationTimeline` — renders user/system messages with timeline dots and timestamps
+- [x] **3.2** `QuickReplies` — row of suggestion chips ("Make it cheaper", "Direct flights only", etc.)
 - [ ] **3.3** `FilterBar` — cabin class dropdown (left) + sort by dropdown (right)
 - [ ] **3.4** `AirlineLogo` — colored square badge with airline code
 - [ ] **3.5** `FlightCard` — airline info, departure→arrival route with duration/stops, price, date, "View details" link
