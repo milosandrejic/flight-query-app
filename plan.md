@@ -60,9 +60,9 @@ src/
 ## Implementation Steps
 
 ### Phase 1: Foundation
-- [ ] **1.1** Define TypeScript types (`types/index.ts`) matching backend API schemas
-- [ ] **1.2** Create API service (`services/api.ts`) with functions: `searchFlights`, `followUpSearch`, `getFlightDetails`
-- [ ] **1.3** Add environment config (`NEXT_PUBLIC_API_URL`)
+- [x] **1.1** Define TypeScript types (`types/index.ts`) matching backend API schemas
+- [x] **1.2** Create API service (`services/api.ts`) — axios instance export
+- [x] **1.3** Add environment config (`NEXT_PUBLIC_API_URL`)
 
 ### Phase 2: Layout & Static Components
 - [ ] **2.1** `Header` — sticky top bar with plane icon + "Flight Query Engine" text
