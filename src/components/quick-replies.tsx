@@ -4,7 +4,6 @@ const DEFAULT_SUGGESTIONS = [
   "Make it cheaper",
   "Try next week",
   "Direct flights only",
-  "Business class",
   "Morning departures only",
 ];
 

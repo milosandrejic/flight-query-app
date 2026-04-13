@@ -34,6 +34,11 @@ export default function Home() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [cabinClass, setCabinClass] = useState<CabinClass>("economy");
   const [sortBy, setSortBy] = useState<SortBy>("price");
+
+  const handleCabinChange = (cabin: CabinClass) => {
+    setCabinClass(cabin);
+    handleSearch(`Switch to ${cabin.replace("_", " ")} class`);
+  };
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [offerDetails, setOfferDetails] = useState<OfferDetailsResponse | null>(null);
   const [detailsLoading, setDetailsLoading] = useState(false);
@@ -161,7 +166,7 @@ export default function Home() {
             <FilterBar
               cabinClass={cabinClass}
               sortBy={sortBy}
-              onCabinChange={setCabinClass}
+              onCabinChange={handleCabinChange}
               onSortChange={setSortBy}
             />
           </Box>
