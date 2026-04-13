@@ -23,6 +23,7 @@ import {
   formatDate,
   formatPrice,
   formatDuration,
+  formatIsoDuration,
 } from "@/utils/format";
 
 import { OfferDetailsResponse } from "@/types";
@@ -135,7 +136,7 @@ function DetailContent({ details }: { details: OfferDetailsResponse; onClose: ()
                   component="span"
                   sx={{ fontWeight: 400, ml: 1 }}
                 >
-                  · {slice.duration}
+                  · {formatIsoDuration(slice.duration)}
                 </Box>
               }
             </Typography>
@@ -264,7 +265,7 @@ function SegmentRow({ segment, isLast, nextSegment }: SegmentRowProps) {
               </Typography>
 
               <Typography sx={{ fontSize: 13, color: "#6b7280" }}>
-                {segment.origin} · {formatDate(segment.departing_at)}
+                {segment.origin_city_name ? `${segment.origin_city_name} (${segment.origin})` : segment.origin} · {formatDate(segment.departing_at)}
               </Typography>
             </Box>
 
@@ -283,7 +284,7 @@ function SegmentRow({ segment, isLast, nextSegment }: SegmentRowProps) {
               <Clock size={13} color="#9ca3af" />
 
               <Typography sx={{ fontSize: 12, color: "#9ca3af" }}>
-                {segment.duration}
+                {formatIsoDuration(segment.duration)}
               </Typography>
 
               {
@@ -301,7 +302,7 @@ function SegmentRow({ segment, isLast, nextSegment }: SegmentRowProps) {
             </Typography>
 
             <Typography sx={{ fontSize: 13, color: "#6b7280" }}>
-              {segment.destination} · {formatDate(segment.arriving_at)}
+              {segment.destination_city_name ? `${segment.destination_city_name} (${segment.destination})` : segment.destination} · {formatDate(segment.arriving_at)}
             </Typography>
           </Box>
         </Box>
@@ -427,6 +428,7 @@ function BaggageSection({ details }: { details: OfferDetailsResponse }) {
 
                 <Typography sx={{ fontSize: 13, color: "#374151" }}>
                   {bag.quantity}x {isCarryOn ? "Carry-on" : "Checked bag"}
+                  {bag.max_weight_kg ? ` (${bag.max_weight_kg}kg)` : ""}
                 </Typography>
               </Box>
             );

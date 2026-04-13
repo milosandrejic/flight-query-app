@@ -49,7 +49,7 @@ export function FlightCard({ flight, onViewDetails }: FlightCardProps) {
 
           <Box>
             <Typography sx={{ fontSize: 15, fontWeight: 600, color: "#111827" }}>
-              {carrierCode}
+              {firstSegment.carrier_name || carrierCode}
             </Typography>
 
             <Typography sx={{ fontSize: 13, color: "#6b7280" }}>

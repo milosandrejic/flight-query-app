@@ -48,6 +48,7 @@ export interface FlightSegment {
   departing_at: string;
   arriving_at: string;
   carrier: string;
+  carrier_name: string | null;
   flight_number: string;
   duration: string | null;
 }
@@ -99,6 +100,8 @@ export interface OfferConditions {
 export interface BaggageAllowance {
   type: string;
   quantity: number;
+  description: string | null;
+  max_weight_kg: number | null;
 }
 
 export interface OfferPassenger {
@@ -109,7 +112,9 @@ export interface OfferPassenger {
 
 export interface OfferSliceSegment {
   origin: string;
+  origin_city_name: string | null;
   destination: string;
+  destination_city_name: string | null;
   departing_at: string;
   arriving_at: string;
   carrier: string;
