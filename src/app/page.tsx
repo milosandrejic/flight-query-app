@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { Box } from "@mui/material";
 
@@ -11,6 +11,7 @@ import {
   FlightResult,
   ConversationMessage,
   FlightSearchResponse,
+  OfferDetailsResponse,
 } from "@/types";
 
 import { Header } from "@/components/header";
@@ -22,6 +23,7 @@ import { WelcomeHero } from "@/components/welcome-hero";
 import { QuickReplies } from "@/components/quick-replies";
 import { LoadingSkeleton } from "@/components/loading-skeleton";
 import { BackgroundPattern } from "@/components/background-pattern";
+import { FlightDetailPanel } from "@/components/flight-detail-panel";
 import { ConversationTimeline } from "@/components/conversation-timeline";
 
 export default function Home() {
@@ -31,6 +33,11 @@ export default function Home() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [cabinClass, setCabinClass] = useState<CabinClass>("economy");
   const [sortBy, setSortBy] = useState<SortBy>("price");
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [offerDetails, setOfferDetails] = useState<OfferDetailsResponse | null>(null);
+  const [detailsLoading, setDetailsLoading] = useState(false);
+  const [detailsError, setDetailsError] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const hasConversation = messages.length > 0;
 
@@ -60,6 +67,10 @@ export default function Home() {
       setSessionId(data.session_id);
       setFlights(data.results);
       addMessage("system", `Found ${data.results.length} flights matching your search.`);
+
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     } catch {
       addMessage("system", "Something went wrong. Please try again.");
     } finally {
@@ -67,8 +78,25 @@ export default function Home() {
     }
   };
 
-  const handleViewDetails = (id: string) => {
-    console.log("View details:", id);
+  const handleViewDetails = async (id: string) => {
+    setDetailsOpen(true);
+    setDetailsLoading(true);
+    setDetailsError(false);
+    setOfferDetails(null);
+
+    try {
+      const { data } = await api.get<OfferDetailsResponse>(`/flights/${encodeURIComponent(id)}`);
+
+      setOfferDetails(data);
+    } catch {
+      setDetailsError(true);
+    } finally {
+      setDetailsLoading(false);
+    }
+  };
+
+  const handleCloseDetails = () => {
+    setDetailsOpen(false);
   };
 
   const handleRetry = () => {
@@ -162,6 +190,14 @@ export default function Home() {
           <EmptyState onRetry={handleRetry} />
         }
       </Box>
+
+      <FlightDetailPanel
+        open={detailsOpen}
+        details={offerDetails}
+        isLoading={detailsLoading}
+        error={detailsError}
+        onClose={handleCloseDetails}
+      />
     </>
   );
 }

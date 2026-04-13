@@ -79,14 +79,14 @@ src/
 - [x] **3.5** `FlightCard` — airline info, departure→arrival route with duration/stops, price, date, "View details" link
 - [x] **3.6** `LoadingSkeleton` — shimmer skeleton matching flight card layout
 - [x] **3.7** `EmptyState` — "No flights found" with retry action
-- [ ] **3.8** Wire search flow in `page.tsx`: send query → show loading → display conversation + results
+- [x] **3.8** Wire search flow in `page.tsx`: send query → show loading → display conversation + results
 
 ### Phase 4: Flight Details Panel
-- [ ] **4.1** `FlightDetailPanel` — slide-in from right (desktop) / bottom sheet (mobile)
-- [ ] **4.2** Flight route timeline with segments, layover indicators
-- [ ] **4.3** Price breakdown table (base fare, taxes, total)
-- [ ] **4.4** Baggage allowance section (carry-on + checked)
-- [ ] **4.5** Wire "View details" click → fetch offer details → open panel
+- [x] **4.1** `FlightDetailPanel` — slide-in from right (desktop) / bottom sheet (mobile)
+- [x] **4.2** Flight route timeline with segments, layover indicators
+- [x] **4.3** Price breakdown table (base fare, taxes, total)
+- [x] **4.4** Baggage allowance section (carry-on + checked)
+- [x] **4.5** Wire "View details" click → fetch offer details → open panel
 
 ### Phase 5: Follow-up & Polish
 - [ ] **5.1** Follow-up flow: after results, user can type new query → POST to `/search/follow-up/{session_id}`
