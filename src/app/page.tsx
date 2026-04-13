@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useRef, useState } from "react";
 
 import { Box } from "@mui/material";
@@ -146,7 +147,10 @@ export default function Home() {
 
         {
           hasConversation && !isLoading && flights.length > 0 &&
-          <Box sx={{ mb: 3 }}>
+          <Box
+            ref={resultsRef}
+            sx={{ mb: 3 }}
+          >
             <QuickReplies onSelect={handleSearch} />
           </Box>
         }
@@ -174,12 +178,18 @@ export default function Home() {
           !isLoading && flights.length > 0 &&
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mb: 4 }}>
             {
-              sortedFlights.map((flight) => (
-                <FlightCard
+              sortedFlights.map((flight, index) => (
+                <motion.div
                   key={flight.id}
-                  flight={flight}
-                  onViewDetails={handleViewDetails}
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <FlightCard
+                    flight={flight}
+                    onViewDetails={handleViewDetails}
+                  />
+                </motion.div>
               ))
             }
           </Box>

@@ -89,11 +89,11 @@ src/
 - [x] **4.5** Wire "View details" click → fetch offer details → open panel
 
 ### Phase 5: Follow-up & Polish
-- [ ] **5.1** Follow-up flow: after results, user can type new query → POST to `/search/follow-up/{session_id}`
-- [ ] **5.2** Quick reply chips trigger follow-up search
-- [ ] **5.3** Auto-scroll to results when loaded
-- [ ] **5.4** Responsive design: mobile adaptations for filter bar, cards, detail panel
-- [ ] **5.5** Animations (framer-motion): fade-in for cards, slide for panel, stagger for list items
+- [x] **5.1** Follow-up flow: after results, user can type new query → POST to `/search/follow-up/{session_id}`
+- [x] **5.2** Quick reply chips trigger follow-up search
+- [x] **5.3** Auto-scroll to results when loaded
+- [x] **5.4** Responsive design: mobile adaptations for filter bar, cards, detail panel
+- [x] **5.5** Animations (framer-motion): fade-in for cards, slide for panel, stagger for list items
 
 ---
 
