@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flight Query App
+
+A chat-style natural language flight search interface. Ask for flights in plain English, refine results with follow-up questions, and view detailed itineraries — all through a conversational UI.
+
+![Main Screen](design/screenshot/main.png)
+
+## Features
+
+- **Natural language search** — type queries like _"Flights from NYC to London next Friday"_
+- **Follow-up refinement** — narrow results with messages like _"Make it cheaper"_ or _"Direct flights only"_
+- **Quick reply chips** — one-tap suggestions after each search
+- **Flight detail panel** — slide-in panel with route timeline, price breakdown, and baggage info
+- **Responsive design** — adapted layouts for desktop and mobile
+- **Animated UI** — smooth transitions for cards, panels, and conversation messages
+
+| After search | Flight details |
+|---|---|
+| ![After query](design/screenshot/after%20intial%20query.png) | ![Flight details](design/screenshot/flight%20details.png) |
+
+## Tech Stack
+
+- **Next.js 16** with App Router
+- **React 19**
+- **MUI 9** (Material UI) for component primitives
+- **Motion** (Framer Motion) for animations
+- **Axios** for API requests
+- **Lucide React** for icons
+- **TypeScript** with strict mode
+
+## Prerequisites
+
+- Node.js 20+
+- The [flight-query-engine](https://github.com) backend running on `localhost:8000`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Default | Description |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Backend API base URL |
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── layout.tsx                # Root layout with MUI providers
+│   ├── page.tsx                  # Main page (single-page app, all state lives here)
+│   └── globals.css               # CSS reset & global styles
+├── components/
+│   ├── header.tsx                # Sticky top bar
+│   ├── welcome-hero.tsx          # Empty state with example queries
+│   ├── chat-input.tsx            # Message input + send button
+│   ├── conversation-timeline.tsx # Message history with timeline dots
+│   ├── quick-replies.tsx         # Suggestion chips
+│   ├── filter-bar.tsx            # Cabin class + sort dropdowns
+│   ├── flight-card.tsx           # Flight result card
+│   ├── flight-detail-panel.tsx   # Slide-in detail panel
+│   ├── airline-logo.tsx          # Colored badge with airline code
+│   ├── loading-skeleton.tsx      # Shimmer skeleton cards
+│   ├── empty-state.tsx           # "No flights found" state
+│   └── background-pattern.tsx    # Decorative SVG background
+├── services/
+│   └── api.ts                    # Axios client for backend
+├── types/
+│   └── index.ts                  # TypeScript types matching backend schemas
+└── utils/
+    └── format.ts                 # Date/time/price formatting helpers
+```
 
-## Deploy on Vercel
+## Backend API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The app communicates with [flight-query-engine](https://github.com) via these endpoints:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/search` | Initial natural language flight search |
+| `POST` | `/search/follow-up/{session_id}` | Refine previous search with follow-up |
+| `GET` | `/flights/{offer_id}` | Get full flight offer details |
+| `GET` | `/health` | Health check |
